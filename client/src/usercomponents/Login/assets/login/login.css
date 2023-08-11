@@ -1,0 +1,108 @@
+/* Login.css */
+
+/* Center the login page */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  /* Background animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Animated background image with blur and gradient */
+  .login-container {
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3)
+      ),
+      url('https://housing.com/news/wp-content/uploads/2022/11/succulent-plant-compressed.jpg') center/cover fixed no-repeat;
+    animation: slideBackground 20s linear infinite;
+ 
+    
+  }
+  
+  @keyframes slideBackground {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+  }
+  
+
+  .login-form {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    animation: fadeInUp 0.5s ease forwards;
+   
+  }
+  
+  /* Define the animation for fading in */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Apply styles to the form controls */
+  .rs-form-group {
+    margin-bottom: 15px;
+  }
+  
+  .rs-form-control-label {
+    font-weight: 600;
+  }
+  
+  .rs-form-control {
+    border-color: #ccc;
+    border-radius: 4px;
+    padding: 8px;
+  }
+  
+  /* Style the buttons */
+  .rs-btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    &:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+  }
+  
+  .rs-btn-link {
+    color: #007bff;
+    &:hover {
+      color: #0056b3;
+    }
+  }
+  
+
+
+  
+  
+@media only screen and (max-width: 600px) {
+    .formLogin{
+      width: 100% !important;
+    }
+  }
+  
+  
+  

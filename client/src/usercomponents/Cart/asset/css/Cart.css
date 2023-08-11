@@ -1,0 +1,41 @@
+.cartItems{
+  border-top:1px solid #ccc5c5;
+  border-bottom: 1px solid #ccc5c5;
+  margin-top:2%;
+  margin-bottom: 2%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+
+}
+
+
+.incrementBtn {
+    background-color: #2f3330;
+    color: white;
+    padding: 5px 12px;
+    margin-right: 10px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+  
+  .decrementBtn {
+    background-color: #f44336;
+    color: white;
+    padding: 5px 12px;
+    margin-left: 10px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+  
+.pricedetails{
+  background: var(--color-white-bg);
+    border-radius: 2px;
+    min-height: 47px;
+    padding: 20px !important;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.2);
+}
+
+.pricetag, .deliveryCharge, .totalAmount{
+  display: flex;
+  justify-content:space-between;
+}

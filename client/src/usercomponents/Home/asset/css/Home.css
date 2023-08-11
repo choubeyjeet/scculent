@@ -1,0 +1,713 @@
+.special_potplant{
+    background-image: url("../image/image4.png");
+    background-size: auto;
+    background-repeat:no-repeat ;
+    height:600px;
+    margin-top: 10%;
+   
+}
+
+.special{
+    margin-left: 25%;
+    color:green
+}
+
+.pot_plant{
+    margin-left:15%;
+    color:#000;
+}
+
+.aboutUsOne{
+    margin-top: 10%;
+}
+
+.aboutUsOne h1{
+    color:#000;
+}
+
+.about_counter {
+    
+    float: left;
+    width: 100%;
+    margin: 0 0 40px;
+    margin-top: 20%;
+}
+
+.counter {
+    float: left;
+    margin: 0 25px 0 0;
+    position: relative;
+    text-align: center;
+    width: auto;
+    cursor: pointer;
+}
+
+.num {
+    background: #fff;
+    border-radius: 50%;
+    border: 3px solid #81ba00;
+    display: inline-block;
+    float: none;
+    font: 500 30px/72px "Playfair Display",sans-serif;
+    color: #000000;
+    height: 80px;
+    text-align: center;
+    width: 80px;
+    transition-duration: 0.3s;
+    transition-property: color;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.num:hover{
+    background: #81ba00;
+    color:#fff;
+    transition: 0.5s ease-out;
+}
+
+.desc {
+    font-size: 16px;
+    letter-spacing: 0.8px;
+    line-height: 18px;
+    margin: 10px 0 0;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.aboutBtn {
+    float: left;
+    width: 100%;
+    background: #81ba00;
+    color: #ffffff;
+    width: auto;
+    float: left;
+    font-size: 16px;
+    text-transform: capitalize;
+    line-height: 21px;
+    font-family: "Playfair Display",sans-serif;
+    padding: 11px 30px;
+    border-radius: 22px;
+   cursor: pointer;
+    transition: 400ms ease-in-out;
+    text-decoration: none;
+}
+
+
+
+.trendingHead{
+    
+
+    background: rgba(0, 0, 0, 0) url("../image/separator.png") no-repeat scroll center top;
+    color: #000000;
+    float: left;
+    font: 600 40px/48px "Playfair Display",sans-serif;
+    letter-spacing: 0.4px;
+    margin: 0;
+    padding: 40px 0;
+    position: relative;
+    text-align: center;
+    text-transform: capitalize;
+    width: 100%;
+}
+    
+
+
+
+.tab-box-heading {
+    float: left;
+    text-align: center;
+    width: 100%;
+    margin: 0 0 30px;
+}
+
+.nav.nav-tabs {
+    border: medium none;
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+    padding: 0;
+}
+
+ul li {
+    margin: 0 10px 0 0;
+}
+
+.nav-tabs > li {
+    float: left;
+    margin: 0;
+    position: relative;
+}
+
+
+.nav>li {
+    position: relative;
+    display: block;
+}
+
+.nav-tabs>li {
+    float: left;
+    margin-bottom: -1px;
+    padding:10px;
+    margin:20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border:2px solid #b6b1b1;
+    border-radius: 25px;
+    cursor: pointer;
+    font: 500 16px/18px "Poppins",Helvetica,sans-serif;
+}
+
+.nav-tabs > li.active{
+    background: #81ba00;
+    border: 2px solid #81ba00;
+    color: #ffffff;
+    
+    border-radius: 25px;
+
+}
+.product-thumb{
+    
+    font: 400 14px/18px "Poppins",Helvetica,sans-serif;
+}
+
+
+.priceTag{
+    
+    font: 700 18px/20px "Playfair Display",Helvetica,sans-serif;
+}
+
+.Our_Product{
+    margin-top: 5%;
+}
+
+
+
+.Service{
+    background-attachment: scroll;
+    background-image: url("../image/pattern.png");
+    background-repeat: repeat;
+    background-color: #e5e5e5;
+    float: left;
+    width: 100%;
+    position: relative;
+    padding: 5% 0 90px;
+   
+    text-align: center;
+}
+
+
+
+.service-subtitle {
+    float: left;
+    width: 100%;
+    text-align: center;
+    font-size: 22px;
+    line-height: 30px;
+    letter-spacing: 0.8px;
+    text-transform: capitalize;
+    margin: 0 0 90px;
+    font-style: italic;
+    font-family: Playfair Display;
+    color: #545454;
+}
+
+.services-content {
+    float: left;
+    width: 100%;
+    margin-top: 10%;
+}
+
+
+.service-img {
+    background: rgba(0, 0, 0, 0) url("../image/service-bg-1.png") no-repeat scroll 0 0 / contain;
+    content: "";
+    height: 150px;
+    left: 0;
+    margin-top: -50%;
+    margin-left:20%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 150px;
+    padding-top: 30px;
+}
+
+.service-img1 {
+    background: rgba(0, 0, 0, 0) url("../image/service-bg-2.png") no-repeat scroll 0 0 / contain;
+    content: "";
+    height: 150px;
+    left: 0;
+    margin-top: -50%;
+    margin-left:20%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 150px;
+    padding-top: 30px;
+}
+
+.service-content {
+    float: left;
+    width: 100%;
+    margin: 20px 0 0;
+    text-align: center;
+}
+
+.services-title {
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    line-height: 26px;
+    margin: 0 0 15px;
+    text-transform: capitalize;
+    font-style: italic;
+    font-family: "Playfair Display";
+    color: #000000;
+}
+
+
+.container_div{
+    
+    background-image: url("../image/pattern.png");
+   
+    background-color: #e5e5e5;
+    float: left;
+    width: 100%;
+    position: relative;
+    padding: 5% 0 90px;
+   
+    text-align: center;
+    margin-top:5%;
+}
+
+.rs-carousel-slider-item{
+    background:transparent !important;
+}
+
+.testimonial-inner{
+    background: url("../image/pattern.png") !important;
+}
+
+
+
+.testimonial_image{
+   
+        float: none;
+        display: inline-block;
+        padding: 0;
+        height: 120px;
+        width: 120px;
+        border: 5px solid #ffffff;
+        border-radius: 50%;
+        
+        box-shadow: 0 0 10px 1px rgba(2, 2, 2, 0.1);
+        -moz-box-shadow: 0 0 10px 1px rgba(2, 2, 2, 0.1);
+        -webkit-box-shadow: 0 0 10px 1px rgba(2, 2, 2, 0.1);
+        vertical-align: top;
+        overflow: hidden;
+   
+}
+
+.testimonial_user_title{
+   
+        color: #000000;
+        float: left;
+        font: 400 18px/20px "poppins",Arial,Helvetica,sans-serif;
+        letter-spacing: 1.4px;
+        margin: 0;
+        padding: 0 0 10px;
+        text-transform: capitalize;
+        width: 100%;
+    }
+
+    .user_designation {
+        color: #000000;
+        float: left;
+        font: 400 15px/20px "Poppins",Helvetica,sans-serif;
+        text-transform: capitalize;
+        width: 100%;
+    }
+
+    .testimonial_desc p {
+        color: #777777;
+        font-family: Playfair Display;
+        font-size: 16px;
+        letter-spacing: 1px;
+        line-height: 32px;
+        margin: 0 0 20px;
+        position: relative;
+    }
+
+
+
+.specialproimg{
+    width:100%
+}
+.priceTagOne{font: 700 18px/20px "Playfair Display",Helvetica,sans-serif;}
+
+.yousaveprice{
+    font: 700 18px/20px "Playfair Display",Helvetica,sans-serif;
+    color:green
+}
+
+.progressbar{
+    margin-top:5%;
+}
+
+.progresspara{
+    margin-left:12px;
+    font: 500 18px/20px "Playfair Display",Helvetica,sans-serif;
+}
+.succulents{
+    background-image: url("../image/succulents_box.jpg");
+}
+
+
+.jade{
+    background-image: url("../image/jade.jpg");
+}
+.snake {
+    background-image: url("../image/snake.jpg");
+}
+.bonsai{
+    background-image: url("../image/bonsai.jpg");
+}
+.cactus{
+    background-image: url("../image/cactus_box.jpg");  
+}
+.syngonium {
+    background-image: url("../image/sygonium.jpg"); 
+}
+.newPlant{
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:250px;
+}
+
+.bestSelling{
+    background-image: url("../image/banner-02.jpg");
+    background-repeat: no-repeat;
+    height:400px;
+    
+}
+
+.newPlant:hover{
+    transform: scale(1.02);
+    transition: transform .5s;
+}
+
+.bestSelling:hover{
+    transform: scale(1.02);
+    transition: transform .5s;  
+}
+
+.Nplant {
+    text-align: left;
+    margin:10%;
+    padding-top: 10%;
+    color:#fff;
+ 
+}
+
+.Nplant h2 {
+    color:#fff !important;
+    background-color: #00000069;
+    padding:3px;
+    text-align: center;
+   
+}
+
+.Nplant button {
+    margin-top: 40% !important;
+    display: block !important;
+}
+
+
+.Bselling{
+    text-align: left;
+    margin:10%;
+    padding-top: 10%;
+}
+
+.Bselling h2{
+    font-family: Playfair Display;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 48px;
+    text-transform: capitalize;
+    color: #000000;
+}
+
+.Nplant h2{
+    font-family: Playfair Display;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 48px;
+    text-transform: capitalize;
+    color: #000000;
+}
+
+.Nplant p{
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 44px;
+    text-transform: capitalize;
+    color: #000000;
+}
+
+.Bselling p{
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 44px;
+    text-transform: capitalize;
+    color: #000000;
+}
+
+.Nplant Button{
+    background: #81ba00;
+    color: #ffffff;
+    border-radius: 22px;
+    -moz-border-radius: 22px;
+    -webkit-border-radius: 22px;
+    -khtml-border-radius: 22px;
+    display: inline-block;
+    float: none;
+    font-size: 14px;
+    line-height: 24px;
+    margin-top: 10px;
+    padding: 10px 25px;
+}
+
+.Bselling Button{
+    background: #81ba00;
+    color: #ffffff;
+    border-radius: 22px;
+    -moz-border-radius: 22px;
+    -webkit-border-radius: 22px;
+    -khtml-border-radius: 22px;
+    display: inline-block;
+    float: none;
+    font-size: 14px;
+    line-height: 24px;
+    margin-top: 10px;
+    padding: 10px 25px;
+}
+.panel_div_mob1{
+    display: inline-block;
+    width: 240px;
+}
+
+.panel_div_mob{
+    display: inline-block;
+    width: 240px;
+}
+
+.img_mob_pan{
+    width:240px;
+    height:240px
+}
+
+
+@media screen and (max-width: 480px) {
+
+    .serivce_regard_mob{
+        margin-top: 40%;
+    }
+
+    .service-img {
+       
+    content: "";
+    height: 120px;
+    left: 0;
+    margin-top: -30%;
+    margin-left:35%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 120px;
+    padding-top: 30px;
+    }
+
+    .service-img1{
+      
+    height: 120px;
+    left: 0;
+    margin-top: -30%;
+    margin-left:35%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 120px;
+    padding-top: 30px;
+    }
+
+    .newPlant{
+        background-image: url("../image/banner-01.jpg");
+        background-repeat: no-repeat;
+        height:300px;
+    }
+
+    .panel_div_mob{
+        margin-left: 10%;
+        margin-bottom: 10%;
+        width:300px;
+    }
+    
+    .img_mob_pan{
+        width:300px;
+        height:240px
+    }
+
+    .nav-tabs li{
+        margin-left:1px;
+    }
+
+
+}
+
+
+
+.custom-slider {
+    height: 90vh !important;
+}
+
+.Nplant a {
+    text-decoration: none !important;
+}
+
+
+.masthead-content-wrapper {
+    background:  url("https://www.giromagi.com/img/home-slider/main.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: right center;
+  height: 100vh;
+}
+
+.destinations-section-wrapper {
+  width: 45%;
+  height: 0;
+}
+
+.green {
+  border-bottom: 300px solid rgba(42,86,102,0.75);
+  border-right: 300px solid transparent;
+  position: absolute;
+  z-index: 0;
+}
+
+.masthead-content {
+  width: 75%;
+  margin: 0 auto;
+}
+
+/* Uses Flexbox to align text vertically */
+.title-container {
+  width: 50%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 300px;
+  z-index: 10;
+}
+
+h2.title {
+  font-family: 'Montserrat';
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 70px;
+  line-height: 0.9;
+  color: #fff;
+}
+
+h5.subtitle {
+  font-family: 'Raleway';
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 20px;
+  color: #fff;
+}
+
+@media screen and (max-width: 850px) {
+  h2.title {
+    font-size: 3em !important;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .title-container {
+    width: 70% !important;
+  }
+}
+
+.trendin_product{
+    margin-top: 30px;
+}
+
+.ParallaxVideo {
+    min-height: 300px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border: 0;
+    position: relative;
+}
+
+#video-container {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+#video-container video {
+    position: absolute;
+    z-index: 0;
+}
+
+.top-left {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 30px;
+    
+  }
+
+
+  .wrapper {
+    height: 100vh;
+    /*This part is important for centering*/
+    display: grid;
+    place-items: center;
+  }
+  
+  .typing-demo {
+    width: 22ch;
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: monospace;
+    
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0
+    }
+  }
+      
+  @keyframes blink {
+    50% {
+      border-color: transparent
+    }
+  }
+

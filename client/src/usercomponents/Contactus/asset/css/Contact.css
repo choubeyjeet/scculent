@@ -1,0 +1,115 @@
+
+.ourlocationrow{
+    margin-top:3%;
+}
+.ourlocationheading{
+    font-family: "Poppins",Helvetica,sans-serif;
+    color: #333333;
+    font-size: 21px;
+    clear: both;
+}
+
+.contact_div{
+    border:1px solid #d4d1d1;
+    padding:15px;
+}
+
+.homeiconcontact{
+    background: #81ba00;
+    border: 2px solid #81ba00;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -khtml-border-radius: 50%;
+    color: #ffffff;
+    font-size: 16px;
+    height: 30px;
+    margin: 10px 5px 10px 0;
+    padding: 7px;
+    padding-left: 9px;
+    padding-right: 9px;
+    text-align: center;
+    width: 30px;
+}
+
+.contactpara{
+    font: 400 13px/18px "Poppins",Helvetica,sans-serif;
+    letter-spacing: 1px;
+    color: #777777;
+    margin-top: 7%;
+}
+
+.btn-info {
+    color: #ffffff;
+    background-color: #81ba00;
+    border-color: #81ba00;
+}
+
+.btn {
+    display: inline-block;
+    padding: 7px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+   color:#fff;
+   text-decoration: none;
+    border: 1px solid transparent;
+    /* border-radius: 4px; */
+}
+
+.contact_googlemap{
+    margin-top: 3%;
+}
+
+.contactinput{
+    text-align: right;
+    font: "Poppins",Helvetica,sans-serif;
+    font-size: 16px;
+}
+
+.inputcontactus{
+    margin-top:3%;
+}
+
+.subm_btn {
+    background: #81ba00;
+   
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -khtml-border-radius: 25px;
+    color: #ffffff;
+    font: 400 13px/20px "Poppins",Helvetica,sans-serif;
+    letter-spacing: 1px;
+    padding: 8px 20px;
+    text-transform: capitalize;
+    align-items: end;
+}
+
+.subm_btn:hover{
+    background:#777777;
+}
+
+@media screen and (max-width: 480px) {
+
+    .ourLocatMob{
+        margin-top:10%;
+
+
+        
+    }
+
+
+}
+
+.locationadd{
+    padding-top:20px;
+    padding-bottom:20px;
+}

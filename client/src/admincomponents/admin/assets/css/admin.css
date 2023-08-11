@@ -1,0 +1,82 @@
+.tableProductPagination button {
+    width: 40px !important;
+}
+
+.editButton {
+    width: 6px !important;
+}
+
+.rs-drawer-header .rs-drawer-header-close {
+    width: 30px !important;
+}
+
+.addPointer {
+    cursor: pointer;
+}
+
+.marginTop {
+    margin-top: 40px;
+}
+
+.showData {
+    border: 1px solid grey;
+    border-radius: 10px;
+    height: 120px;
+    
+    padding:20px;
+    background:linear-gradient(#ff2cdf, #0014ff);
+    color: #ffffff;
+    transition: transform .2s;
+    text-align: center;
+}
+.showData:hover {
+    transform: scale(1.1);
+}
+
+.showIconSize {
+    font-size: 2em;
+}
+.showDivInline {
+    display: inline;
+}
+
+.incReaseF {
+    font-size: 20px;
+    font-weight: 900;
+    margin-top: 20px;
+}
+
+.navHeaderAdmin{
+    text-align: right;
+    margin-top: 20px;
+}
+
+.verticalMiddle{
+    display: table-cell;
+    vertical-align: middle;
+    height: 50px;
+}
+.inboxItem{
+    cursor: pointer;
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid red;
+}
+
+.navLinks a {
+    text-decoration: none;
+}
+
+.notificationB {
+    background: transparent;
+
+}
+.notificationB:hover {
+background: transparent !important;
+}
+
+.notificationbBox {
+    width: 400px;
+}
+

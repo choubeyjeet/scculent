@@ -1,0 +1,252 @@
+.navbar_main{
+    height:100px;
+}
+
+.nav_main{
+    font-family:'Fran"poppins",Helvetica,sans-serif' ;
+font-size: large;
+
+}
+
+.nav_mainright{
+   
+    margin-top: 1px;
+}
+
+
+
+.navlogo{
+    width:50px;
+    margin-top: -30%;
+    
+}
+
+
+
+
+.rs-navbar-item-icon {
+    font-size: 30px !important;
+    margin-right: 12px !important;
+    padding-left: 5px;
+    text-align: center;
+}
+
+.userprofile .rs-dropdown-menu{
+    margin-left:-100px !important;
+    width:200px;
+}
+
+
+
+.priceTagCart{
+    padding:10px;
+}
+.productThumbCart{
+padding:10px; 
+width:20px;
+}
+
+.dropdownCartmenu .rs-dropdown-menu {
+    margin-left: -300px;
+    
+}
+
+.cartmenu:hover{
+    color:#000;
+    text-decoration: none;
+}
+    
+
+.totalCart{
+ display: flex;
+ justify-content: space-between;
+}
+
+.viewCart{
+    padding-left:20px;
+    padding-right:20px;
+    color:#fff;
+    border-radius: 25px;
+    background-color: gray;
+}
+
+.viewCart:hover{
+    
+    color:#fff;
+    
+    background: #81ba00;
+}
+
+.checkOut{
+    background-color:black;
+    padding-left:20px;
+    padding-right:20px;
+    color:#fff;
+    border-radius: 25px;
+}
+
+.checkOut:hover{
+    color:#fff;
+    
+    background: #81ba00;
+}
+
+
+.view_cartTable{
+    margin-left: 10%;
+    height:100vh;
+    margin-top:5%;
+}
+
+.view_card_col{
+    border:1px solid rgb(216, 215, 215);
+    overflow:hidden !important;
+    position:absolute;
+    
+    
+}
+
+.view_cardHeader {
+    line-height: 3.66666667;
+    padding: 10px;
+}
+
+
+.view_cardImg{
+    width:80px;
+    height:100px;
+    margin: 0px 38px;
+}
+
+.total_price{
+border:1px solid rgb(216, 215, 215);
+text-align: right;
+height:40px;
+padding: 10px;
+font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.btn-default {
+    background: #81ba00;
+    border: 1px solid #81ba00;
+    border-radius: 25px;
+    width:auto;
+    font: 400 14px/20px "Poppins",Helvetica,sans-serif;
+    letter-spacing: 1px;
+    color: #ffffff;
+    text-transform: capitalize;
+    padding: 8px 20px;
+    margin-top:5%;
+    margin-bottom: 5%;
+}
+
+
+/* ************* */
+
+.mobile-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  .navbar-toggle {
+    font-size: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .navbar-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #444;
+    width: 100%;
+    transform: translateY(-100%);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .navbar-links.open {
+    max-height: 300px; /* Adjust this value as needed */
+  }
+  
+  .navbar-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+  }
+  
+  /* Optional: Add additional styles for active links */
+  .navbar-links a.active {
+    background-color: #555;
+  }
+  /* ************* */
+
+  .navclass {
+    border-bottom: 1px solid #000;
+    background-color: transparent !important;
+    margin-top: 2%;
+    text-decoration: none !important;
+  }
+  
+  .baricon {
+    display: none;
+  }
+  
+  .navformobile {
+    display: none !important;
+    /* margin-bottom: -350px; */
+    background-color: aliceblue;
+    position: relative;
+    width: 100% !important;
+    z-index: 99999999999;
+  }
+  
+  .rs-nav-vertical > .rs-dropdown > .rs-dropdown-toggle {
+    text-align: center !important;
+    width: 100%;
+    z-index: 0;
+  }
+  .navformobile a {
+    color: #000 !important;
+  }
+  
+  .hide-link-decorations {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  .hide-link-decorations:hover {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  @media screen and (max-width: 480px) {
+    .baricon {
+      display: block;
+    }
+    .navbarcolleps {
+      display: none;
+    }
+    .active {
+      display: block !important;
+    }
+  
+    .navmenubar Nav.Item {
+      margin-left: 20%;
+    }
+
+    
+  }
+  
+

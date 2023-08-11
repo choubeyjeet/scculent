@@ -1,0 +1,68 @@
+.headingone{
+    text-align: center;
+    font: 600 40px/48px "Playfair Display",sans-serif;
+}
+
+.icon_btn{
+    margin:5px;
+    width:40px;
+}
+
+.icon_btn:hover{
+background-color: #81ba00;
+color:#fff;
+width:45px;
+
+}
+
+.product_name{
+    border-bottom: 1px solid #e5e5e5;
+    color: #000000;
+    margin: 0 0 16px;
+    padding-bottom: 16px;
+    text-transform: capitalize;
+    font: 500 20px/24px "Playfair Display",Helvetica,sans-serif;
+}
+
+.about_product{
+    color: #222222;
+    text-transform: capitalize;
+}
+
+.productIcons{
+    margin-left: 6%;
+}
+
+.product_list{
+   
+    margin-bottom: 10%;
+    width:240px;
+}
+
+.product_col_list{
+    padding-left: 4%;
+}
+
+@media screen and (max-width: 480px){
+    .product_list{
+        margin-left: 10%;
+        margin-bottom: 10%;
+        width:300px;
+    }
+
+    .productIcons{
+        margin-left: 13%;
+    }
+
+}
+    
+.justifyConta {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.product_list{
+    text-decoration: none !important
+}

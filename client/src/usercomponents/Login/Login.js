@@ -84,6 +84,8 @@ export const Login = () => {
                     <Button appearance="link">Forgot password?</Button>
                   </Form.Group>
                 </Form>
+                Don't Have Account?
+                <Button appearance="link">Create Account</Button>
               </Panel>
             </FlexboxGrid.Item>
           </FlexboxGrid>

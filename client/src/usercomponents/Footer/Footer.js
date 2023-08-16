@@ -6,6 +6,7 @@ import TwitterIcon from "@rsuite/icons/legacy/Twitter";
 import LinkedinIcon from "@rsuite/icons/legacy/Linkedin";
 import "./asset/css/Footer.css";
 import logo from "../Navbar/asset/image/logo.png";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -44,10 +45,13 @@ export default function Footer() {
 
         <div className="footer-right">
           <p className="footer-company-about">
-            <span>About the company</span>
-            E-commerce (electronic commerce) is the buying and selling of goods
-            and services, or the transmitting of funds or data, over an
-            electronic network, primarily the internet.
+            <br />
+            <Link
+              style={{ textDecoration: "none", color: "#fff" }}
+              to="/policy"
+            >
+              Privacy Policy
+            </Link>
           </p>
 
           <div className="footer-icons">

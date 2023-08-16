@@ -1,0 +1,167 @@
+.empty-cart {
+  width: 50vw;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Maison Neue';
+  font-weight: 300;
+}
+.svgE {
+  max-width: 60%;
+  padding: 5rem 3rem;
+}
+.svgE #oval,
+.svgE #plus,
+.svgE #diamond,
+.svgE #bubble-rounded {
+  -webkit-animation: plopp 4s ease-out infinite;
+          animation: plopp 4s ease-out infinite;
+}
+.svgE #oval:nth-child(1),
+.svgE #plus:nth-child(1),
+.svgE #diamond:nth-child(1),
+.svgE #bubble-rounded:nth-child(1) {
+  -webkit-animation-delay: -240ms;
+          animation-delay: -240ms;
+}
+.svgE #oval:nth-child(2),
+.svgE #plus:nth-child(2),
+.svgE #diamond:nth-child(2),
+.svgE #bubble-rounded:nth-child(2) {
+  -webkit-animation-delay: -480ms;
+          animation-delay: -480ms;
+}
+.svgE #oval:nth-child(3),
+.svgE #plus:nth-child(3),
+.svgE #diamond:nth-child(3),
+.svgE #bubble-rounded:nth-child(3) {
+  -webkit-animation-delay: -720ms;
+          animation-delay: -720ms;
+}
+.svgE #oval:nth-child(4),
+.svgE #plus:nth-child(4),
+.svgE #diamond:nth-child(4),
+.svgE #bubble-rounded:nth-child(4) {
+  -webkit-animation-delay: -960ms;
+          animation-delay: -960ms;
+}
+.svgE #oval:nth-child(5),
+.svgE #plus:nth-child(5),
+.svgE #diamond:nth-child(5),
+.svgE #bubble-rounded:nth-child(5) {
+  -webkit-animation-delay: -1200ms;
+          animation-delay: -1200ms;
+}
+.svgE #oval:nth-child(6),
+.svgE #plus:nth-child(6),
+.svgE #diamond:nth-child(6),
+.svgE #bubble-rounded:nth-child(6) {
+  -webkit-animation-delay: -1440ms;
+          animation-delay: -1440ms;
+}
+.svgE #oval:nth-child(7),
+.svgE #plus:nth-child(7),
+.svgE #diamond:nth-child(7),
+.svgE #bubble-rounded:nth-child(7) {
+  -webkit-animation-delay: -1680ms;
+          animation-delay: -1680ms;
+}
+.svgE #oval:nth-child(8),
+.svgE #plus:nth-child(8),
+.svgE #diamond:nth-child(8),
+.svgE #bubble-rounded:nth-child(8) {
+  -webkit-animation-delay: -1920ms;
+          animation-delay: -1920ms;
+}
+.svgE #oval:nth-child(9),
+.svgE #plus:nth-child(9),
+.svgE #diamond:nth-child(9),
+.svgE #bubble-rounded:nth-child(9) {
+  -webkit-animation-delay: -2160ms;
+          animation-delay: -2160ms;
+}
+.svgE #oval:nth-child(10),
+.svgE #plus:nth-child(10),
+.svgE #diamond:nth-child(10),
+.svgE #bubble-rounded:nth-child(10) {
+  -webkit-animation-delay: -2400ms;
+          animation-delay: -2400ms;
+}
+.svgE #oval:nth-child(11),
+.svgE #plus:nth-child(11),
+.svgE #diamond:nth-child(11),
+.svgE #bubble-rounded:nth-child(11) {
+  -webkit-animation-delay: -2640ms;
+          animation-delay: -2640ms;
+}
+.svgE #oval:nth-child(12),
+.svgE #plus:nth-child(12),
+.svgE #diamond:nth-child(12),
+.svgE #bubble-rounded:nth-child(12) {
+  -webkit-animation-delay: -2880ms;
+          animation-delay: -2880ms;
+}
+.svgE #oval:nth-child(13),
+.svgE #plus:nth-child(13),
+.svgE #diamond:nth-child(13),
+.svgE #bubble-rounded:nth-child(13) {
+  -webkit-animation-delay: -3120ms;
+          animation-delay: -3120ms;
+}
+.svgE #oval:nth-child(14),
+.svgE #plus:nth-child(14),
+.svgE #diamond:nth-child(14),
+.svgE #bubble-rounded:nth-child(14) {
+  -webkit-animation-delay: -3360ms;
+          animation-delay: -3360ms;
+}
+.svgE #oval:nth-child(15),
+.svgE #plus:nth-child(15),
+.svgE #diamond:nth-child(15),
+.svgE #bubble-rounded:nth-child(15) {
+  -webkit-animation-delay: -3600ms;
+          animation-delay: -3600ms;
+}
+.svgE #oval:nth-child(16),
+.svgE #plus:nth-child(16),
+.svgE #diamond:nth-child(16),
+.svgE #bubble-rounded:nth-child(16) {
+  -webkit-animation-delay: -3840ms;
+          animation-delay: -3840ms;
+}
+.svgE #bg-line:nth-child(2) {
+  fill-opacity: 0.3;
+}
+.svgE #bg-line:nth-child(3) {
+  fill-opacity: 0.4;
+}
+h3 {
+  font-size: 2rem;
+  line-height: 2rem;
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+}
+
+body {
+  background: #f2f2f2;
+}
+@-webkit-keyframes plopp {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, -10px);
+    opacity: 0;
+  }
+}
+@keyframes plopp {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, -10px);
+    opacity: 0;
+  }
+}

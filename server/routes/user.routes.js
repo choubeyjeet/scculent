@@ -17,6 +17,7 @@ const {
   deleteCart,
   updateCartItem,
   deleteCartItem,
+  checkProductInCart,
 } = require("../controllers/cart/cart.controller");
 
 const router = express.Router();
@@ -33,7 +34,8 @@ router.post("/changePassword", isAuthenticated);
 router.get("/getCart", isAuthenticated, fetchAllCarts);
 router.post("/addToCart", isAuthenticated, addToCart);
 router.put("/updateCart", isAuthenticated, updateCartItem);
-router.delete("/deleteCart/:id", isAuthenticated, deleteCartItem);
+router.post("/deleteCart", isAuthenticated, deleteCartItem);
+router.get("/getcartitem", isAuthenticated, checkProductInCart);
 
 //forget
 

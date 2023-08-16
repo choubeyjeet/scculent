@@ -543,9 +543,28 @@ ul li {
     width: 120px;
     padding-top: 30px;
     }
-
+    .succulents{
+        background-image: url("../image/succulents_box.jpg");
+    }
+    
+    
+    .jade{
+        background-image: url("../image/jade.jpg");
+    }
+    .snake {
+        background-image: url("../image/snake.jpg");
+    }
+    .bonsai{
+        background-image: url("../image/bonsai.jpg");
+    }
+    .cactus{
+        background-image: url("../image/cactus_box.jpg");  
+    }
+    .syngonium {
+        background-image: url("../image/sygonium.jpg"); 
+    }
     .newPlant{
-        background-image: url("../image/banner-01.jpg");
+        
         background-repeat: no-repeat;
         height:300px;
     }
@@ -565,7 +584,18 @@ ul li {
         margin-left:1px;
     }
 
+    .title-container h2{
+        margin-top: 10% !important;
+    }
 
+
+    .green {
+        position: inherit !important;
+    }
+    .destinations-section-wrapper {
+        width: 100% !important;
+        height: 0;
+    }
 }
 
 
@@ -580,7 +610,7 @@ ul li {
 
 
 .masthead-content-wrapper {
-    background:  url("https://www.giromagi.com/img/home-slider/main.jpg");
+    background:  url("../image/main.jpg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -590,7 +620,7 @@ ul li {
 }
 
 .destinations-section-wrapper {
-  width: 45%;
+  width: 55%;
   height: 0;
 }
 
@@ -607,8 +637,32 @@ ul li {
 }
 
 /* Uses Flexbox to align text vertically */
+
+
+
+
+.headingline{
+    background-color: #0ABAB5;
+    color: #fff;
+    width: 100%;
+  height: 50px;
+  position: relative;
+    overflow: hidden;
+  text-align: center;
+}
+
+.headlinepara{
+    padding-top: 15px !important;
+    font-size: 15px;
+    position:absolute;
+    width: 100%;
+    text-align: center;
+    transition: opacity 1.0s ease-in-out;
+   
+}
+
 .title-container {
-  width: 50%;
+  width: 100%;
   position: absolute;
   display: flex;
   justify-content: center;
@@ -621,14 +675,14 @@ h2.title {
   font-family: 'Montserrat';
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: 70px;
+  font-size: 50px;
   line-height: 0.9;
   color: #fff;
 }
 
 h5.subtitle {
   font-family: 'Raleway';
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   letter-spacing: 2px;
   font-size: 20px;
   color: #fff;
@@ -642,7 +696,7 @@ h5.subtitle {
 
 @media screen and (max-width: 1200px) {
   .title-container {
-    width: 70% !important;
+    width: 100% !important;
   }
 }
 

@@ -94,7 +94,7 @@
 }
 
 .subm_btn:hover{
-    background:#777777;
+    background:green;
 }
 
 @media screen and (max-width: 480px) {

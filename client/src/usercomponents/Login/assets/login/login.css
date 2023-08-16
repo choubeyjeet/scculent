@@ -25,7 +25,7 @@
         rgba(0, 0, 0, 0.3),
         rgba(0, 0, 0, 0.3)
       ),
-      url('https://housing.com/news/wp-content/uploads/2022/11/succulent-plant-compressed.jpg') center/cover fixed no-repeat;
+      url('../../../Home/asset//image/main.jpg') center/cover fixed no-repeat;
     animation: slideBackground 20s linear infinite;
  
     

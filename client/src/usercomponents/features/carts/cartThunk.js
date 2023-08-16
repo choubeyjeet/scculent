@@ -30,6 +30,22 @@ export const fetchCart = createAsyncThunk(
   }
 );
 
+//get item is in cart or not
+
+export const getCartItem = createAsyncThunk(
+  "user/getcartitem",
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await axiosInstance.get(
+        `/api/v1/getcartitem?userId=${data.userId}&productId=${data.productId}`
+      );
+      return response;
+    } catch (error) {
+      return rejectWithValue(error?.response);
+    }
+  }
+);
+
 //update cart by id
 
 export const updateCart = createAsyncThunk(
@@ -50,7 +66,8 @@ export const deleteCart = createAsyncThunk(
   "user/deleteCart",
   async (data, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.post("/deleteCart");
+      const response = await axiosInstance.post("/api/v1/deleteCart", data);
+      return response;
     } catch (error) {
       return rejectWithValue(error?.response);
     }

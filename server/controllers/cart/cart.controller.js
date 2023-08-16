@@ -8,9 +8,17 @@ exports.fetchAllCarts = async (req, res, next) => {
       "userId items.productId"
     ); // Find all carts for the specified user ID
 
+    const totalTPrice = carts[0].items.reduce(
+      (accumulator, element) => {
+        accumulator.totalTPrice += element.tPrice;
+        accumulator.totalQuantity += element.quantity;
+        return accumulator;
+      },
+      { totalTPrice: 0, totalQuantity: 0 }
+    );
     return res
       .status(200)
-      .json({ message: "Carts fetched successfully", carts });
+      .json({ message: "Carts fetched successfully", carts, totalTPrice });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
@@ -78,7 +86,7 @@ exports.updateCartItem = async (req, res, next) => {
     if (increment) {
       // Increment the quantity and adjust the price
       existingItem.quantity += +increment;
-      console.log(existingItem);
+
       existingItem.tPrice = existingItem.quantity * existingItem.price;
     }
 
@@ -102,9 +110,14 @@ exports.updateCartItem = async (req, res, next) => {
 };
 
 exports.deleteCartItem = async (req, res, next) => {
-  const { productId } = req.params;
+  const { productId, userId } = req.body;
+  let loginId = req.user._id;
 
   try {
+    // if (loginId !== userId) {
+    //   return res.status(400).json({ error: "Invalid Login Id." });
+    // }
+
     const cart = await CartModel.findOne({ userId: req.user._id });
 
     if (!cart) {
@@ -119,22 +132,36 @@ exports.deleteCartItem = async (req, res, next) => {
       return res.status(404).json({ error: "Item not found in cart" });
     }
 
-    const existingItem = cart.items[existingItemIndex];
-
-    if (existingItem.quantity > 1) {
-      // Decrement the quantity if it's greater than 1
-      existingItem.quantity -= 1;
-      existingItem.price = existingItem.quantity * existingItem.price;
-    } else {
-      // Delete the product from the cart if the quantity is 1
-      cart.items.splice(existingItemIndex, 1);
-    }
+    cart.items.splice(existingItemIndex, 1);
 
     await cart.save();
 
     return res
       .status(200)
       .json({ message: "Cart item deleted successfully", cart });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+exports.checkProductInCart = async (req, res, next) => {
+  let userId = req.query.userId; // Assuming the user ID is provided in the request body
+  let productId = req.query.productId;
+  try {
+    let carts = await CartModel.find({ userId }).populate(
+      "userId items.productId"
+    ); // Find all carts for the specified user ID
+    const products = carts[0].items;
+
+    const filteredProducts = products.filter(
+      (product) => product.productId._id.toString() === productId
+    );
+
+    if (filteredProducts.length > 0) {
+      return res.status(200).json({ message: "Product Id exists" });
+    } else {
+      return res.status(400).json({ message: "Product Id not exits" });
+    }
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }

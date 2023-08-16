@@ -2,11 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import "./assets/css/productDetails.css";
 import NavbarHead from "../Navbar/NavbarHead";
 import Footer from "../Footer/Footer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getProductWithID } from "../features/products/prooductListThunk";
-import { useNavigate, useParams } from "react-router-dom";
-import { Rate, Loader } from "rsuite";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { Rate } from "rsuite";
 import { addToCart } from "../features/carts/cartThunk";
+import { LoaderDiv } from "../Home/LoaderDiv";
+import { getCartItem } from "../features/carts/cartThunk";
 
 const ProductDetails = () => {
   const [productData, setProductData] = useState([]);
@@ -14,24 +16,50 @@ const ProductDetails = () => {
   let navigate = useNavigate();
   const [price, setPrice] = useState();
   const [isLoading, setLoading] = useState(true);
+  const [isExist, setExist] = useState(false);
   const dispatch = useDispatch();
 
   const { id } = useParams();
+  const { user } = useSelector((state) => state.userSlice);
+  const userId = user?._id;
+  console.log(userId);
+  const fetchCartDetails = async () => {
+    try {
+      const response = await dispatch(
+        getCartItem({ userId: userId, productId: id })
+      );
+      if (response.payload.status === 200) {
+        setExist(true);
+      } else {
+        setExist(false);
+      }
+    } catch (error) {}
+  };
+
   useEffect(() => {
     const getProductWith = async () => {
       try {
         const product = await dispatch(getProductWithID(id));
         setProductData(product.payload.data);
-        setLoading(false);
+
         setCurrentImage(product.payload.data.productImage[0].imageUrl);
         setPrice(product.payload.data.price);
-      } catch (err) {}
+      } catch (err) {
+        console.log(err);
+      }
     };
     getProductWith();
   }, []);
 
+  useEffect(() => {
+    if (userId) {
+      fetchCartDetails();
+      setLoading(false);
+    }
+  }, [userId]);
   //addToCartHandler
   const addToCartHandler = async () => {
+    setLoading(true);
     try {
       var productId = productData._id;
 
@@ -43,11 +71,13 @@ const ProductDetails = () => {
         })
       );
       let { data, status } = response.payload;
+      setLoading(false);
       if (status === 200) {
         navigate("/cart");
       }
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -57,7 +87,7 @@ const ProductDetails = () => {
       {isLoading ? (
         <>
           {" "}
-          <Loader size="lg" content="Large" />
+          <LoaderDiv />
         </>
       ) : (
         <>
@@ -70,7 +100,7 @@ const ProductDetails = () => {
                   </div>
                 </div>
                 <div className="img-select">
-                  {productData?.productImage.map((ele) => {
+                  {productData?.productImage?.map((ele) => {
                     return (
                       <>
                         <div className="img-item">
@@ -134,13 +164,30 @@ const ProductDetails = () => {
                     max="100"
                     step={1}
                   /> */}
-                  <button
-                    type="button"
-                    className="btn"
-                    onClick={addToCartHandler}
-                  >
-                    Add to Cart <i className="fas fa-shopping-cart"></i>
-                  </button>
+
+                  {isExist ? (
+                    <>
+                      <button
+                        type="button"
+                        className="btn"
+                        onClick={() => {
+                          navigate("/cart");
+                        }}
+                      >
+                        Go to Cart <i className="fas fa-shopping-cart"></i>
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        type="button"
+                        className="btn"
+                        onClick={addToCartHandler}
+                      >
+                        Add to Cart <i className="fas fa-shopping-cart"></i>
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

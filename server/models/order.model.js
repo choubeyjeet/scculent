@@ -7,15 +7,39 @@ const orderSchema = new Schema(
       required: true,
       ref: "users",
     },
-    items: [
-      // ... items array details ...
+    productsId: [
+      {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: "products",
+      },
     ],
-    totalAmount: {
+
+    finalAmount: {
       type: Number,
       required: true,
     },
     shippingAddress: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "address",
+      required: true,
+    },
+    razorpay_payment_id: {
       type: String,
+      required: true,
+    },
+    razorpay_order_id: {
+      type: String,
+      required: true,
+    },
+    razorpay_signature: {
+      type: String,
+      required: true,
+    },
+    paymentStatus: {
+      type: String,
+      enum: ["pending", "paid", "failed"],
+      default: "pending",
       required: true,
     },
     status: {
@@ -26,7 +50,9 @@ const orderSchema = new Schema(
     },
   },
   {
-    toJSON: true,
     timestamps: true,
   }
 );
+
+let orderModel = new mongoose.model("orders", orderSchema);
+module.exports = orderModel;

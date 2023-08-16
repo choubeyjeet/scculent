@@ -114,9 +114,9 @@ export default function Contact() {
                     <iframe
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27858.716937269597!2d79.49755986622941!3d29.213563429889096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39a09addbd0c86d1%3A0x6793e360cb3d930f!2sHaldwani%2C%20Uttarakhand%20263139!5e0!3m2!1sen!2sin!4v1691586659432!5m2!1sen!2sin"
                       style={{ border: 0, width: "100%", height: "80vh" }}
-                      allowfullscreen=""
+                      allowFullScreen="allowfullscreen"
                       loading="lazy"
-                      referrerpolicy="no-referrer-when-downgrade"
+                      referrerPolicy="no-referrer-when-downgrade"
                     ></iframe>
                   </Col>
                 </Row>

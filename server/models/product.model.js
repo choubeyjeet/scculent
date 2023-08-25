@@ -43,6 +43,7 @@ const productSchema = new Schema(
     adminId: {
       type: Schema.Types.ObjectId,
       ref: "users",
+      select: false,
       required: true,
     },
   },

@@ -22,7 +22,7 @@ const ProductDetails = () => {
   const { id } = useParams();
   const { user } = useSelector((state) => state.userSlice);
   const userId = user?._id;
-  console.log(userId);
+
   const fetchCartDetails = async () => {
     try {
       const response = await dispatch(
@@ -49,7 +49,7 @@ const ProductDetails = () => {
       }
     };
     getProductWith();
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     if (userId) {

@@ -134,8 +134,8 @@ export default function Home() {
             <h1 className="trendingHead">Our Product</h1>
             <Grid fluid>
               <Row className="show-grid">
-                <Col md={1}></Col>
-                <Col md={7} sm={24} xs={24} data-aos="fade-up">
+                {/* <Col md={1}></Col> */}
+                <Col md={8} sm={24} xs={24} data-aos="fade-up">
                   <div className="newPlant bonsai">
                     <div className="Nplant">
                       <h2>Bonsai Plant!</h2>
@@ -148,7 +148,7 @@ export default function Home() {
                     </div>
                   </div>
                 </Col>
-                <Col md={7} sm={24} xs={24} data-aos="fade-up">
+                <Col md={8} sm={24} xs={24} data-aos="fade-up">
                   <div className="newPlant snake">
                     <div className="Nplant">
                       <h2>Snake Plant!</h2>
@@ -161,7 +161,7 @@ export default function Home() {
                     </div>
                   </div>
                 </Col>
-                <Col md={7} sm={24} xs={24} data-aos="fade-up">
+                <Col md={8} sm={24} xs={24} data-aos="fade-up">
                   <div className="newPlant cactus">
                     <div className="Nplant">
                       <h2>Cactus Plant!</h2>
@@ -175,11 +175,11 @@ export default function Home() {
                     </div>
                   </div>
                 </Col>
-                <Col md={1}></Col>
+                {/* <Col md={1}></Col> */}
               </Row>
               <Row className="show-grid">
-                <Col md={1}></Col>
-                <Col md={7} sm={24} xs={24} data-aos="fade-up">
+                {/* <Col md={1}></Col> */}
+                <Col md={8} sm={24} xs={24} data-aos="fade-up">
                   <div className="newPlant syngonium">
                     <div className="Nplant">
                       <h2>Syngonium Plants!</h2>
@@ -193,7 +193,7 @@ export default function Home() {
                     </div>
                   </div>
                 </Col>
-                <Col md={7} sm={24} xs={24} data-aos="fade-up">
+                <Col md={8} sm={24} xs={24} data-aos="fade-up">
                   <div className="newPlant succulents">
                     <div className="Nplant">
                       <h2>Succulents Plants!</h2>
@@ -207,7 +207,7 @@ export default function Home() {
                     </div>
                   </div>
                 </Col>
-                <Col md={7} sm={24} xs={24} data-aos="fade-up">
+                <Col md={8} sm={24} xs={24} data-aos="fade-up">
                   <div className="newPlant jade">
                     <div className="Nplant">
                       <h2>Jade Plant!</h2>
@@ -220,7 +220,7 @@ export default function Home() {
                     </div>
                   </div>
                 </Col>
-                <Col md={1}></Col>
+                {/* <Col md={1}></Col> */}
               </Row>
             </Grid>
           </div>{" "}

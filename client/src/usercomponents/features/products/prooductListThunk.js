@@ -40,6 +40,14 @@ export const getAllProducts = createAsyncThunk(
         const response = await axiosInstance.get(
           `/api/v1/product/fetchAllProducts?type=all`
         );
+
+        return response.data;
+      }
+
+      if (data.type === "search") {
+        const response = await axiosInstance.get(
+          `/api/v1/product/fetchAllProducts?type=search&title=${data.title}`
+        );
         return response.data;
       }
     } catch (error) {

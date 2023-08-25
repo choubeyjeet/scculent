@@ -14,7 +14,7 @@ cloudinary.config({
 //fetch All products
 exports.getProducts = async (req, res) => {
   try {
-    const { type, search, sort, category } = req.query;
+    const { type, search, sort, category, title } = req.query;
 
     let query = {};
     let sortOptions = {};
@@ -38,16 +38,12 @@ exports.getProducts = async (req, res) => {
     if (type === "all" || type === "category" || type === "search") {
       if (type === "search") {
         query.title = {
-          $regex: search,
+          $regex: title,
           $options: "i",
         };
       }
 
       if (type === "category") {
-        // if (category) {
-        //   return res.status(400).json({ error: "Category parameter missing" });
-        // }
-
         query.category = {
           $regex: category,
           $options: "i",

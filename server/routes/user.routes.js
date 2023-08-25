@@ -19,6 +19,7 @@ const {
   deleteCartItem,
   checkProductInCart,
 } = require("../controllers/cart/cart.controller");
+const { contactUs } = require("../controllers/contact/ContactUsController");
 
 const router = express.Router();
 
@@ -44,5 +45,7 @@ router.put("/resetPassword/:token", resetPassword);
 
 //admin routes
 router.get("/fetchAllUser", fetchAllUser);
+
+router.post("/contactus", contactUs);
 
 module.exports = router;

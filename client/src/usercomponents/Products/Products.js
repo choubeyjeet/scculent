@@ -64,6 +64,7 @@ export default function Products() {
   }, []);
 
   const handleItemClick = async (index, item) => {
+    setLoading(true);
     setActiveIndex(index);
     try {
       const response = await dispatch(
@@ -71,7 +72,10 @@ export default function Products() {
       );
 
       setProductName(response.payload.products);
-    } catch (errors) {}
+      setLoading(false);
+    } catch (errors) {
+      setLoading(false);
+    }
   };
   return (
     <>

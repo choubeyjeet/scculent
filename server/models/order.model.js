@@ -7,11 +7,17 @@ const orderSchema = new Schema(
       required: true,
       ref: "users",
     },
-    productsId: [
+    productsDetails: [
       {
-        type: Schema.Types.ObjectId,
-        required: true,
-        ref: "products",
+        productId: {
+          type: mongoose.Schema.Types.ObjectId,
+          required: true,
+          ref: "products",
+        },
+        quantity: {
+          type: String,
+          required: true,
+        },
       },
     ],
 
@@ -38,14 +44,14 @@ const orderSchema = new Schema(
     },
     paymentStatus: {
       type: String,
-      enum: ["pending", "paid", "failed"],
-      default: "pending",
+      enum: ["Pending", "Paid", "Failed"],
+      default: "Pending",
       required: true,
     },
     status: {
       type: String,
-      enum: ["pending", "processing", "shipped", "delivered"],
-      default: "pending",
+      enum: ["Pending", "Processing", "Shipped", "Delivered"],
+      default: "Pending",
       required: true,
     },
   },

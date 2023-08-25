@@ -9,10 +9,12 @@ import {
   InputGroup,
   Input,
   Badge,
-  Avatar,
+  AutoComplete,
 } from "rsuite";
-import { Link, NavLink } from "react-router-dom";
+
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import HomeIcon from "@rsuite/icons/legacy/Home";
+import debounce from "lodash/debounce";
 
 import SearchIcon from "@rsuite/icons/Search";
 import {
@@ -30,9 +32,30 @@ import "./asset/css/Navbar.css";
 import { GrClose } from "react-icons/gr";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCart } from "../features/carts/cartThunk";
+import { getAllProducts } from "../features/products/prooductListThunk";
 
 const CustomNav = ({ active, onSelect, onClose, ...props }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [dataList, setdataList] = useState([
+    "Eugenia",
+    "Bryan",
+    "Linda",
+    "Nancy",
+    "Lloyd",
+    "Alice",
+    "Julia",
+    "Albert",
+    "Louisa",
+    "Lester",
+    "Lola",
+    "Lydia",
+    "Hal",
+    "Hannah",
+    "Harriet",
+    "Hattie",
+    "Hazel",
+    "Hilda",
+  ]);
 
   const handleClick = () => {
     setIsVisible(!isVisible);
@@ -73,6 +96,9 @@ export default function NavbarHead({ setTotalSum }) {
   const { isAuthenticated, user } = useSelector((state) => state.userSlice);
   const [navbarcolleps, setnavbarcolleps] = useState(false);
   const [currentDiv, setCurrentDiv] = useState(0);
+  const [dataList, setdataList] = useState([]);
+  const [valueA, setValue] = React.useState("");
+  const navigate = useNavigate();
   const handleNavbarClose = () => {
     setnavbarcolleps(false);
   };
@@ -86,14 +112,53 @@ export default function NavbarHead({ setTotalSum }) {
     try {
       const response = await dispatch(fetchCart(userId));
 
-      setTotalItems(response.payload.data.carts[0].items);
-      setTotalSum(response.payload.data.totalTPrice);
+      setTotalItems(response?.payload?.data?.carts[0]?.items);
+      setTotalSum(response?.payload?.data?.totalTPrice);
       // setIsLoading(false);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       // setIsLoading(false);
     }
   };
+
+  const debouncedSearchProducts = debounce(async (searchValue) => {
+    try {
+      const response = await dispatch(
+        getAllProducts({ type: "search", title: searchValue })
+      );
+      setdataList(response.payload.products);
+    } catch (error) {
+      console.log(error);
+    }
+  }, 400);
+
+  const searchProducts = (e) => {
+    const searchValue = e;
+    // setValue(searchValue);
+
+    debouncedSearchProducts(searchValue);
+  };
+
+  // const searchProducts = async (e) => {
+  //   setValue(e);
+  //   debouncedSearchProducts()
+  //   try {
+  //     const response = await dispatch(
+  //       getAllProducts({ type: "search", title: e })
+  //     );
+  //     setdataList(response.payload.products);
+
+  //     console.log(response.payload.products);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  const formattedData = dataList.map((item) => ({
+    label: item.title, // Use the 'title' field as the label
+    value: item.title,
+    fvalue: item._id,
+    // Use the '_id' field as the value
+  }));
   useEffect(() => {
     fetchByCart();
   }, []);
@@ -105,6 +170,13 @@ export default function NavbarHead({ setTotalSum }) {
 
     return () => clearInterval(intervalId);
   }, []);
+
+  const setPage = (value, item) => {
+    console.log(item);
+
+    setValue(item.value);
+    navigate(`/products/details/${item.fvalue}`);
+  };
 
   return (
     <div>
@@ -155,20 +227,22 @@ export default function NavbarHead({ setTotalSum }) {
         </Nav>
         <Nav pullRight className="nav_mainright navbarcolleps" id="navcolleps">
           <Nav.Item>
-            {isVisible && (
-              <InputGroup className="searchbar">
-                <Input />
-                <InputGroup.Button>
-                  <SearchIcon />
-                </InputGroup.Button>
-              </InputGroup>
-            )}
+            <InputGroup>
+              <AutoComplete
+                data={formattedData}
+                // value={valueA}
+                onChange={searchProducts}
+                onSelect={(value, item) => {
+                  setPage(value, item);
+                  // Do something with the selected item's ID (item.value)
+                }}
+                style={{ width: 300 }}
+              />
+              <InputGroup.Button tabIndex={-1}>
+                <SearchIcon />
+              </InputGroup.Button>
+            </InputGroup>
           </Nav.Item>
-          <Nav.Item
-            className="serchiconnav"
-            icon={<SearchIcon />}
-            onClick={handleClick}
-          ></Nav.Item>
 
           <Nav.Menu className="userprofile" icon={<AiOutlineUser />}>
             {isAuthenticated === true ? (

@@ -27,7 +27,7 @@ import {
   getAllProducts,
 } from "../features/productList/productListThunk";
 import { axiosInstance } from "../../config/axiosInstance";
-
+import debounce from "lodash/debounce";
 const { Column, HeaderCell, Cell } = Table;
 export const ProductsTable = () => {
   const [limit, setLimit] = React.useState(10);
@@ -105,19 +105,26 @@ export const ProductsTable = () => {
     }
   };
 
-  const fetchProduct = async (value) => {
+  const debouncedSearchProducts = debounce(async (searchValue) => {
     try {
       const response = await dispatch(
-        getAllProducts({ type: "search", search: value })
+        getAllProducts({ type: "search", search: searchValue })
       );
 
-      if (value == "") {
+      if (searchValue == "") {
         const response = await dispatch(getAllProducts({ type: "all" }));
       }
 
       setData(response.payload.products);
       setLoading(false);
     } catch (err) {}
+  }, 400);
+
+  const fetchProduct = (e) => {
+    const searchValue = e;
+    // setValue(searchValue);
+
+    debouncedSearchProducts(searchValue);
   };
 
   var data = productData.filter((v, i) => {
@@ -184,6 +191,7 @@ export const ProductsTable = () => {
                         }}
                       >
                         <img
+                          style={{ width: "50px" }}
                           src={data.productImage[0].imageUrl}
                           alt={data._id}
                         />
@@ -211,6 +219,10 @@ export const ProductsTable = () => {
             <Column width={200} resizable>
               <HeaderCell>Price INR</HeaderCell>
               <Cell dataKey="price" />
+            </Column>
+            <Column width={200} resizable>
+              <HeaderCell>Quantity</HeaderCell>
+              <Cell dataKey="quantity" />
             </Column>
             <Column width={200} resizable>
               <HeaderCell>Discount</HeaderCell>

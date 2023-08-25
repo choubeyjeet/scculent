@@ -157,3 +157,24 @@ hr {
 .payment-button:hover .icon {
   transform: rotate(180deg); /* Rotate the icon 180 degrees on hover */
 }
+
+
+.stepsitems {
+  
+    position: sticky;
+    top: 10px;
+    z-index: 99999;
+    background-color: #0ABAB5;
+    padding: 10px !important;
+    
+ 
+}
+
+.stepsitems .rs-steps-item-title {
+  color: #fff !important;
+}
+
+
+.stepsitems .rs-steps-item-title:after {
+  border-top-color: #fff !important;
+}

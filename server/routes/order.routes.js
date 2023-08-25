@@ -9,15 +9,12 @@ const router = express.Router();
 
 router.post("/createOrder", isAuthenticated, createOrder);
 router.post("/verifyOrder", isAuthenticated, verifyOrder);
-router.get("/secretKey", (req, res, next) => {
+router.get("/secretKey", (req, res) => {
   try {
     return res.status(200).json({ secretKey: process.env.RAZOR_PAY_ID });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
 });
-
-//orders
-router.get("/fetchAllOrders", fetchAllOrders);
 
 module.exports = router;

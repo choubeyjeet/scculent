@@ -13,7 +13,7 @@ const PageNotFound = () => {
           <Col md={1} sm={2} xs={2}></Col>
           <Col md={18} sm={20} xs={20}>
             <div>
-              <div class="empty-cart">
+              <div className="empty-cart">
                 <img src={svg} alt="empty" />
               </div>
             </div>

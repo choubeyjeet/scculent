@@ -19,7 +19,6 @@ export const getOrder = createAsyncThunk(
 export const verifyPayment = createAsyncThunk(
   "payment/verifyPayment",
   async (data, rejectWithValue) => {
-    console.log(data);
     try {
       const response = await axiosInstance.post(
         `/api/v1/payments/verifyOrder`,

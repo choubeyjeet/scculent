@@ -1,0 +1,16 @@
+.orderHistory li {
+    margin-top: 20px !important;
+}
+
+.orderHistory {
+    list-style-type: none;
+}
+
+.orderHistory > li p {
+    float: right;
+
+  }
+
+  .imageIcon {
+    width: 50px;
+  }

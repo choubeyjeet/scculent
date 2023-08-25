@@ -80,7 +80,7 @@ export const getAllProducts = createAsyncThunk(
   async (data, rejectWithValue) => {
     try {
       const response = await axiosInstance.get(
-        `/api/v1/product/fetchAllProducts?type=${data.type}&search=${data.search}`
+        `/api/v1/product/fetchAllProducts?type=${data.type}&title=${data.search}`
       );
       return response.data;
     } catch (error) {

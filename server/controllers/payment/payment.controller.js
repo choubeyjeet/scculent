@@ -69,7 +69,7 @@ exports.verifyOrder = async (req, res) => {
         razorpay_order_id: razorpay_order_id,
         razorpay_signature: razorpay_signature,
         paymentStatus: "Paid",
-        status: "Processing",
+        status: "Order Placed",
       });
       await newOrder.save();
 

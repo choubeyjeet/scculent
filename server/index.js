@@ -34,6 +34,7 @@ app.use("/api/v1", require("./routes/user.routes"));
 app.use("/api/v1/address", require("./routes/shipping.routes"));
 app.use("/api/v1/payments", require("./routes/order.routes"));
 app.use("/api/v1", require("./routes/orderhistory.routes"));
+app.use("/api/v1/admin", require("./routes/inbox.routes"));
 
 app.use("/*", (req, res, next) => {
   return res.status(404).json({ error: "Not Found" });

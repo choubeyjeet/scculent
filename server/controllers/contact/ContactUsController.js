@@ -1,13 +1,14 @@
 const ContactModel = require("../../models/contact.model");
 
 exports.contactUs = async (req, res) => {
-  const { username, email, message } = req.body;
+  const { username, email, message, subject } = req.body;
 
   try {
     const contactUs = new ContactModel({
       username,
       email,
       message,
+      subject,
       read: false,
     });
     await contactUs.save();

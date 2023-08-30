@@ -3,18 +3,21 @@ import NavbarHead from "../Navbar/NavbarHead";
 import { useDispatch } from "react-redux";
 import "./assets/css/orderHistory.css";
 import Footer from "../Footer/Footer";
+import { BsDownload } from "react-icons/bs";
 import {
   Row,
   Col,
   Panel,
-  Placeholder,
   Grid,
   PanelGroup,
   Tooltip,
   Whisper,
   Button,
 } from "rsuite";
-import { getOrderHistory } from "../features/orderHistory/orderHistoryThunk";
+import {
+  getOrderHistory,
+  downloadInvoice,
+} from "../features/orderHistory/orderHistoryThunk";
 import DateFormat from "../DateFormat/DateFormat";
 import { LoaderDiv } from "../Home/LoaderDiv";
 const OrderHistory = () => {
@@ -34,6 +37,26 @@ const OrderHistory = () => {
   useEffect(() => {
     getAllOrders();
   }, []);
+
+  const downloadInvoiceOrder = async (orderId) => {
+    setIsLoading(true);
+    try {
+      const response = await dispatch(downloadInvoice({ id: orderId }));
+      const base64 = response.payload.data.message;
+      const downloadLink = document.createElement("a");
+
+      downloadLink.href = "data:application/pdf;base64," + base64;
+
+      downloadLink.download = orderId + ".pdf";
+
+      downloadLink.click();
+      setIsLoading(false);
+    } catch (err) {
+      console.error(err);
+      setIsLoading(false);
+    }
+  };
+
   const tooltip = (
     <Tooltip>
       This is a help <i>tooltip</i> .
@@ -58,6 +81,8 @@ const OrderHistory = () => {
                     orderHistory.map((items, key) => {
                       return (
                         <Panel
+                          eventKey={key}
+                          id={`panel${key}`}
                           header={
                             <div
                               className="header"
@@ -76,7 +101,6 @@ const OrderHistory = () => {
                                 <h5>Total</h5>
                                 <span>₹{items.finalAmount}</span>
                               </div>
-
                               <div>
                                 <h5>Ship To</h5>
                                 <Whisper
@@ -98,8 +122,17 @@ const OrderHistory = () => {
                                 </Whisper>
                               </div>
 
+                              <BsDownload
+                                onClick={() => {
+                                  downloadInvoiceOrder(items._id);
+                                }}
+                                style={{
+                                  fontSize: 20,
+                                }}
+                                title="Download Invoice"
+                              />
                               <p style={{ fontSize: 12, marginRight: "2%" }}>
-                                Order ID: # {items._id}
+                                Order ID: # {items._id} &nbsp;&nbsp;
                               </p>
                             </div>
                           }

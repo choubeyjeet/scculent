@@ -234,7 +234,7 @@ export default function Home() {
                     </video>
                     <div className="top-left">
                       <div className="wrapper">
-                        <div className="typing-demo">
+                        <div className="">
                           400 genera, 2000 species and more than 10,000
                           varieties of succulents for sale online only by
                           Succulent Dhaba

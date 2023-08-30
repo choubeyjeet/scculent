@@ -2,8 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getOrderById } from "../features/orderHistory/orderHistoryThunk";
-import { PanelGroup, Panel, Whisper, Tooltip, Row, Col } from "rsuite";
+import {
+  PanelGroup,
+  Panel,
+  Whisper,
+  Tooltip,
+  Row,
+  Col,
+  Button,
+  ButtonGroup,
+} from "rsuite";
 import DateFormat from "../../usercomponents/DateFormat/DateFormat";
+import { downloadInvoice } from "../../usercomponents/features/orderHistory/orderHistoryThunk";
 
 export const OrderDetails = () => {
   const { id } = useParams();
@@ -23,6 +33,22 @@ export const OrderDetails = () => {
     };
     getData();
   }, [id]);
+
+  const downloadInvoiceOrder = async (orderId) => {
+    try {
+      const response = await dispatch(downloadInvoice({ id: orderId }));
+      const base64 = response.payload.data.message;
+      const downloadLink = document.createElement("a");
+
+      downloadLink.href = "data:application/pdf;base64," + base64;
+
+      downloadLink.download = orderId + ".pdf";
+
+      downloadLink.click();
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <PanelGroup bordered style={{ marginTop: "5%" }}>
@@ -111,12 +137,21 @@ export const OrderDetails = () => {
                       <b>Payment Status:</b> {items.paymentStatus}
                     </p>
                     <p>
-                      <b>Payment Status:</b> {items.status}
+                      <b>Order Status:</b> {items.status}
                     </p>
                   </div>
                 </Col>
                 <Col md={4}></Col>
-                <Col md={10}></Col>
+                <Col md={10} style={{ textAlign: "center" }}>
+                  <Button
+                    appearance="primary"
+                    onClick={() => {
+                      downloadInvoiceOrder(items._id);
+                    }}
+                  >
+                    Download Invoice
+                  </Button>
+                </Col>
               </Row>
 
               <div>

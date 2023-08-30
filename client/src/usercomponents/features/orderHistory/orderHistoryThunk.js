@@ -13,3 +13,15 @@ export const getOrderHistory = createAsyncThunk(
     }
   }
 );
+
+export const downloadInvoice = createAsyncThunk(
+  "order/downloadInvoice",
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await axiosInstance.get("/api/v1/invoice?id=" + data.id);
+      return response;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);

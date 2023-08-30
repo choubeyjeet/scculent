@@ -16,6 +16,7 @@ export default function Contact() {
     username: "",
     email: "",
     message: "",
+    subject: "",
   });
   const [isLoading, setLoading] = useState(false);
   const setFormValue = (fieldname, value) => {
@@ -37,6 +38,7 @@ export default function Contact() {
           username: "",
           email: "",
           message: "",
+          subject: "",
         });
       }
       setLoading(false);
@@ -88,6 +90,23 @@ export default function Contact() {
                         value={userData.email}
                         onChange={(e) => {
                           setFormValue("email", e);
+                        }}
+                      />
+                    </Col>
+                  </Row>
+
+                  <Row className="inputcontactus">
+                    <Col md={4} className="contactinput">
+                      Subject Line
+                    </Col>
+                    <Col md={20}>
+                      <Input
+                        placeholder="Subject Line"
+                        type="text"
+                        required
+                        value={userData.subject}
+                        onChange={(e) => {
+                          setFormValue("subject", e);
                         }}
                       />
                     </Col>

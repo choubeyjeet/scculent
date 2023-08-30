@@ -23,6 +23,8 @@ import SearchIcon from "@rsuite/icons/Search";
 import {
   getOrderHistory,
   getOrderByDate,
+  searchOrderByIdAdmin,
+  getDataByStatusAdmin,
 } from "../features/orderHistory/orderHistoryThunk";
 import DateFormat from "../../usercomponents/DateFormat/DateFormat";
 import { Link } from "react-router-dom";
@@ -98,6 +100,34 @@ export const OrderList = () => {
     // }
   };
 
+  const searchOrderById = async (id) => {
+    try {
+      const response = await dispatch(searchOrderByIdAdmin(id));
+
+      setData(response.payload.data.orders);
+      setTotal(response.payload.data.orders.length);
+      if (id === "") {
+        getOrderList("all");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getDataByStatus = async (status) => {
+    try {
+      if (status === null) {
+        getOrderList("all");
+      } else {
+        const response = await dispatch(getDataByStatusAdmin({ status }));
+        setData(response.payload.data.orders);
+        setTotal(response.payload.data.orders.length);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <Grid>
@@ -125,12 +155,20 @@ export const OrderList = () => {
                   searchable={false}
                   style={{ width: 224 }}
                   placeholder="Select Status"
+                  onChange={(e) => {
+                    getDataByStatus(e);
+                  }}
                 />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </Col>
               <Col md={10}>
                 <InputGroup inside style={{ width: 300 }}>
-                  <Input placeholder="Search By OrderID" />
+                  <Input
+                    placeholder="Search By OrderID"
+                    onChange={(e) => {
+                      searchOrderById(e);
+                    }}
+                  />
                   <InputGroup.Button>
                     <SearchIcon />
                   </InputGroup.Button>

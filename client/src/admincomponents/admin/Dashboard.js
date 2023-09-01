@@ -67,7 +67,7 @@ export const Dashboard = () => {
                 <BarChartIcon className="showIconSize" />
               </div>
               <div className="showDivInline">&nbsp;Total Revenue</div>
-              <div className="incReaseF">Rs12039</div>
+              <div className="incReaseF">₹12039</div>
             </Col>
             <Col md={2}></Col>
             <Col md={4} className="showData">

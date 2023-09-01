@@ -86,3 +86,53 @@ exports.getDataByStatus = async (req, res) => {
     return res.status(500).json({ error: "An error occurred." });
   }
 };
+
+exports.updateOrderStatus = async (req, res) => {
+  const { status, id } = req.query;
+  try {
+    const orderStatus = await orderModel.findByIdAndUpdate(
+      { _id: id },
+      { status: status }
+    );
+
+    return res.status(200).json({ message: "Status Updated Successfully" });
+  } catch (err) {
+    return res.status(500).json({ message: "Cannot update the Status." });
+  }
+};
+
+exports.getOrderByDate = async (req, res) => {
+  const { date } = req.query;
+
+  try {
+    const dateParts = date.split("-");
+    if (dateParts.length !== 3) {
+      return res.status(400).json({ message: "Invalid date format" });
+    }
+
+    const year = parseInt(dateParts[0]);
+    const month = parseInt(dateParts[1]) - 1; // Months are zero-based
+    const day = parseInt(dateParts[2]);
+
+    if (isNaN(year) || isNaN(month) || isNaN(day)) {
+      return res.status(400).json({ message: "Invalid date format" });
+    }
+
+    const parsedDate = new Date(year, month, day);
+
+    const startDate = new Date(parsedDate);
+    const endDate = new Date(parsedDate);
+    endDate.setDate(endDate.getDate() + 1);
+
+    const orderByDate = await orderModel.find({
+      createdAt: {
+        $gte: startDate,
+        $lt: endDate,
+      },
+    });
+
+    return res.status(200).json({ orders: orderByDate });
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+};

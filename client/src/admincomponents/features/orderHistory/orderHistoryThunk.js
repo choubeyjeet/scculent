@@ -31,12 +31,12 @@ export const getOrderById = createAsyncThunk(
   }
 );
 
-export const getOrderByDate = createAsyncThunk(
+export const getOrderByDateAdmin = createAsyncThunk(
   "orders/ordersHistory",
   async (data, rejectWithValue) => {
     try {
       var response = await axiosInstance.get(
-        `/api/v1/admin/getOrderByDate?id=${data.date}`
+        `/api/v1/admin/getOrderByDate?date=${data.date}`
       );
 
       return response;
@@ -66,6 +66,20 @@ export const getDataByStatusAdmin = createAsyncThunk(
     try {
       const response = await axiosInstance.get(
         `/api/v1/admin/getDataByStatus?status=${data.status}`
+      );
+      return response;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);
+
+export const updateOrderStatus = createAsyncThunk(
+  "order/updateOrderStatus",
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await axiosInstance.get(
+        `/api/v1/admin/updateOrderStatus?status=${data.status}&id=${data.id}`
       );
       return response;
     } catch (err) {

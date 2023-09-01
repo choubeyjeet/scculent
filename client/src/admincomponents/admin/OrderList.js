@@ -5,30 +5,26 @@ import {
   Grid,
   Row,
   Col,
-  PanelGroup,
   SelectPicker,
-  Placeholder,
-  Panel,
   DatePicker,
-  InputGroup,
-  Input,
   Whisper,
   Tooltip,
   Table,
   Pagination,
-  Loader,
+  InputGroup,
+  Input,
 } from "rsuite";
 
 import SearchIcon from "@rsuite/icons/Search";
 import {
   getOrderHistory,
-  getOrderByDate,
+  getOrderByDateAdmin,
   searchOrderByIdAdmin,
   getDataByStatusAdmin,
 } from "../features/orderHistory/orderHistoryThunk";
 import DateFormat from "../../usercomponents/DateFormat/DateFormat";
 import { Link } from "react-router-dom";
-
+import { LoaderDiv } from "../../usercomponents/Home/LoaderDiv";
 const { Column, HeaderCell, Cell } = Table;
 export const OrderList = () => {
   const [productData, setData] = useState([]);
@@ -59,7 +55,7 @@ export const OrderList = () => {
     "Order Placed",
     "Processing Stock",
     "Ready For Packing",
-    "Ready To Delievr",
+    "Ready To Deliver",
     "Delivery In Progress",
     "Delivered",
     "Received",
@@ -74,6 +70,7 @@ export const OrderList = () => {
   const [activePage, setActivePage] = React.useState(1);
 
   const getOrderList = async (type) => {
+    setIsLoading(true);
     try {
       const response = await dispatch(
         getOrderHistory({ type, page: activePage, perPage: limit })
@@ -83,6 +80,7 @@ export const OrderList = () => {
       setTotal(response.payload.data.count);
       setIsLoading(false);
     } catch (err) {
+      setIsLoading(false);
       console.log(err);
     }
   };
@@ -92,15 +90,26 @@ export const OrderList = () => {
   }, [activePage, limit]);
 
   const getOrderByDate = async (date) => {
-    // try {
-    //   console.log(date);
-    //   const response = await dispatch(getOrderByDate(date));
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    setIsLoading(true);
+    try {
+      console.log(date);
+      if (date !== "") {
+        const response = await dispatch(getOrderByDateAdmin({ date: date }));
+        let { orders } = response.payload.data;
+        setData(orders);
+        setTotal(orders.length);
+      } else {
+        getOrderList("all");
+      }
+      setIsLoading(false);
+    } catch (err) {
+      setIsLoading(false);
+      console.log(err);
+    }
   };
 
   const searchOrderById = async (id) => {
+    setIsLoading(true);
     try {
       const response = await dispatch(searchOrderByIdAdmin(id));
 
@@ -109,12 +118,15 @@ export const OrderList = () => {
       if (id === "") {
         getOrderList("all");
       }
+      setIsLoading(false);
     } catch (err) {
-      console.log(err);
+      setIsLoading(false);
+      // console.log(err);
     }
   };
 
   const getDataByStatus = async (status) => {
+    setIsLoading(true);
     try {
       if (status === null) {
         getOrderList("all");
@@ -123,7 +135,9 @@ export const OrderList = () => {
         setData(response.payload.data.orders);
         setTotal(response.payload.data.orders.length);
       }
+      setIsLoading(false);
     } catch (err) {
+      setIsLoading(false);
       console.log(err);
     }
   };
@@ -144,10 +158,13 @@ export const OrderList = () => {
                   All
                 </Button>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <DatePicker
+                <input
+                  className="rs-input"
+                  style={{ width: 200, display: "inline" }}
                   onChange={(e) => {
-                    getOrderByDate(e);
+                    getOrderByDate(e.target.value);
                   }}
+                  type="date"
                 />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <SelectPicker
@@ -180,7 +197,7 @@ export const OrderList = () => {
         <Row style={{ marginTop: "5%" }}>
           {isLoading ? (
             <>
-              <Loader />
+              <LoaderDiv />
             </>
           ) : (
             <>

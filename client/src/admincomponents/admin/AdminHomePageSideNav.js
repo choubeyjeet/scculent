@@ -7,6 +7,7 @@ import OperatePeopleIcon from "@rsuite/icons/OperatePeople";
 
 import MessageIcon from "@rsuite/icons/Message";
 import TaskIcon from "@rsuite/icons/Task";
+import SettingIcon from "@rsuite/icons/Setting";
 
 const styles = {
   width: "100%",
@@ -66,6 +67,17 @@ export const AdminHomePageSideNav = (props) => {
               <Nav.Item
                 eventKey="3"
                 as={Link}
+                onSelect={(e) => {
+                  setActiveKeyM(e, "Manage Category");
+                }}
+                to="category"
+                icon={<SettingIcon />}
+              >
+                Manage Category
+              </Nav.Item>
+              <Nav.Item
+                eventKey="4"
+                as={Link}
                 to="users"
                 onSelect={(e) => {
                   setActiveKeyM(e, "Users List");
@@ -76,7 +88,7 @@ export const AdminHomePageSideNav = (props) => {
               </Nav.Item>
 
               <Nav.Item
-                eventKey="4"
+                eventKey="5"
                 as={Link}
                 to="orders"
                 onSelect={(e) => {
@@ -88,7 +100,7 @@ export const AdminHomePageSideNav = (props) => {
               </Nav.Item>
 
               <Nav.Item
-                eventKey="5"
+                eventKey="6"
                 as={Link}
                 to="inbox"
                 onSelect={(e) => {

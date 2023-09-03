@@ -71,7 +71,7 @@ export const AllUserList = () => {
               </Row>
 
               <Table autoHeight bordered cellBordered data={data}>
-                <Column width={50} align="center" fixed>
+                <Column width={200} align="center" fixed resizable>
                   <HeaderCell>Id</HeaderCell>
                   <Cell dataKey="id" />
                 </Column>
@@ -86,10 +86,6 @@ export const AllUserList = () => {
                   <Cell dataKey="lastname" />
                 </Column>
 
-                <Column width={200}>
-                  <HeaderCell>City</HeaderCell>
-                  <Cell dataKey="city" />
-                </Column>
                 <Column width={200}>
                   <HeaderCell>Email</HeaderCell>
                   <Cell dataKey="email" />

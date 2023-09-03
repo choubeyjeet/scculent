@@ -13,32 +13,32 @@ import {
   Container,
 } from "rsuite";
 import "./asset/css/Products.css";
-import image5 from "../Home/asset/image/image5.jpg";
+
 import { LoaderDiv } from "../Home/LoaderDiv";
-import {
-  AiOutlineShoppingCart,
-  AiOutlineHeart,
-  AiOutlineEye,
-} from "react-icons/ai";
-import { CgArrowsExchangeV } from "react-icons/cg";
+
 import NavbarHead from "../Navbar/NavbarHead";
 import Footer from "../Footer/Footer";
 import { useDispatch } from "react-redux";
 import { getAllProducts } from "../features/products/prooductListThunk";
+import { getAllCategoryData } from "../../admincomponents/features/category/categoryProductsThunk";
 
 export default function Products() {
   const [productName, setProductName] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  const items = [
-    "Bonsai Plants",
-    "Lucky Bamboo",
-    "Jade Plants",
-    "Money Plants",
-  ];
+  const [items, setItems] = useState([]);
   const [activeIndex, setActiveIndex] = useState(null);
 
   const dispatch = useDispatch();
   const { id } = useParams();
+
+  const getCategory = async () => {
+    try {
+      const response = await dispatch(getAllCategoryData());
+      setItems(response.payload.data.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const getProducts = async () => {
     try {
@@ -53,6 +53,7 @@ export default function Products() {
       }
 
       setProductName(response.payload.products);
+
       setLoading(false);
     } catch (err) {
       setLoading(false);
@@ -60,6 +61,7 @@ export default function Products() {
   };
 
   useEffect(() => {
+    getCategory();
     getProducts();
   }, []);
 
@@ -71,7 +73,11 @@ export default function Products() {
         getAllProducts({ type: "category", category: item })
       );
 
-      setProductName(response.payload.products);
+      if (response.payload === undefined) {
+        setProductName([]);
+      } else {
+        setProductName(response.payload.products);
+      }
       setLoading(false);
     } catch (errors) {
       setLoading(false);
@@ -97,9 +103,11 @@ export default function Products() {
                           className={
                             index === activeIndex ? "active" : "inactive"
                           }
-                          onClick={() => handleItemClick(index, item)}
+                          onClick={() =>
+                            handleItemClick(index, item.categoryName)
+                          }
                         >
-                          {item}
+                          {item.categoryName}
                         </li>
                       ))}
                     </ul>
@@ -110,40 +118,42 @@ export default function Products() {
 
             <Grid fluid>
               <Row className="">
-                {productName.map((curtEle, index) => {
-                  return (
-                    <div key={index}>
-                      <Col md={5} sm={24} xs={24}>
-                        <NavLink
-                          as={Link}
-                          to={`/products/details/${curtEle._id}`}
-                        >
-                          <Panel
-                            shaded
-                            bordered
-                            bodyFill
-                            className="product_list"
+                <Col md={24}>
+                  <div className="container-inline">
+                    {productName.map((curtEle, index) => {
+                      return (
+                        <div className="items" key={index}>
+                          <NavLink
+                            as={Link}
+                            to={`/products/details/${curtEle._id}`}
                           >
-                            <img
-                              src={curtEle?.productImage[0]?.imageUrl}
-                              height="240"
-                              className="img_mob_pan"
-                            />
+                            <Panel
+                              shaded
+                              bordered
+                              bodyFill
+                              className="product_list"
+                            >
+                              <img
+                                src={curtEle?.productImage[0]?.imageUrl}
+                                height="240"
+                                className="img_mob_pan"
+                              />
 
-                            <Panel>
-                              <p className="product-thumb">{curtEle.title}</p>
-                              <p className="priceTag">
-                                <b>₹{curtEle.price}.00</b>
-                              </p>
-                              <p></p>
-                              <Rate readOnly defaultValue={1} size="xs" />
+                              <Panel>
+                                <p className="product-thumb">{curtEle.title}</p>
+                                <p className="priceTag">
+                                  <b>₹{curtEle.price}.00</b>
+                                </p>
+                                <p></p>
+                                <Rate readOnly defaultValue={1} size="xs" />
+                              </Panel>
                             </Panel>
-                          </Panel>
-                        </NavLink>
-                      </Col>
-                    </div>
-                  );
-                })}
+                          </NavLink>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </Col>
               </Row>
             </Grid>
           </div>

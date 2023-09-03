@@ -87,3 +87,17 @@ export const updateOrderStatus = createAsyncThunk(
     }
   }
 );
+
+export const getOrderByUserId = createAsyncThunk(
+  "admin/getOrderByUserId",
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await axiosInstance.get(
+        `/api/v1/admin/getOrderByUserId?id=${data.id}`
+      );
+      return response;
+    } catch (err) {
+      return rejectWithValue(err);
+    }
+  }
+);

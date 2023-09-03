@@ -136,3 +136,19 @@ exports.getOrderByDate = async (req, res) => {
     return res.status(500).json({ message: err.message });
   }
 };
+
+exports.getOrderByUserId = async (req, res) => {
+  const { id } = req.query;
+
+  try {
+    let orders = await orderModel
+      .find({ userId: id })
+      .populate("productsDetails.productId")
+      .populate("shippingAddress")
+      .sort({ createdAt: -1 });
+
+    return res.status(200).json({ orders: orders });
+  } catch (err) {
+    return res.status(404).json({ message: err.message });
+  }
+};

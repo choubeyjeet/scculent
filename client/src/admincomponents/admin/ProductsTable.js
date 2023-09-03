@@ -22,11 +22,10 @@ import "react-toastify/dist/ReactToastify.css";
 import {
   createProduct,
   deleteProductWithID,
-  getProductWithID,
   updateTheProduct,
   getAllProducts,
 } from "../features/productList/productListThunk";
-import { axiosInstance } from "../../config/axiosInstance";
+
 import debounce from "lodash/debounce";
 const { Column, HeaderCell, Cell } = Table;
 export const ProductsTable = () => {
@@ -111,8 +110,8 @@ export const ProductsTable = () => {
         getAllProducts({ type: "search", search: searchValue })
       );
 
-      if (searchValue == "") {
-        const response = await dispatch(getAllProducts({ type: "all" }));
+      if (searchValue === "") {
+        await dispatch(getAllProducts({ type: "all" }));
       }
 
       setData(response.payload.products);

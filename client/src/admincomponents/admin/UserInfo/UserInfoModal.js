@@ -1,23 +1,42 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
-import { axiosInstance } from "../../../config/axiosInstance";
+import React, { useState, useEffect } from "react";
+import {
+  Drawer,
+  Whisper,
+  Tooltip,
+  PanelGroup,
+  Panel,
+  Grid,
+  Row,
+  Col,
+} from "rsuite";
+import { getOrderByUserId } from "../../features/orderHistory/orderHistoryThunk";
+import { useDispatch } from "react-redux";
+import DateFormat from "../../../usercomponents/DateFormat/DateFormat";
 
-import { Drawer, Placeholder, Panel, Grid, Row, Col } from "rsuite";
+import { LoaderDiv } from "../../../usercomponents/Home/LoaderDiv";
 
 export const UserInfoModel = (props) => {
   const { open, setOpen, userID } = props;
-  const [userInfo, setUserInfo] = useState([]);
+
   const [loading, setLoading] = useState(true);
+  let [orderHistory, setOrderHistory] = useState([]);
 
   const setOpenD = async () => {
     setOpen(!open);
   };
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
     let fetchData = async () => {
-      var userData = await axiosInstance.get(`/api/v1/profile/${userID}`);
+      try {
+        var userData = await dispatch(getOrderByUserId({ id: userID }));
 
-      if (userData.status === 200) {
+        setOrderHistory(userData.payload.data.orders);
         setLoading(false);
-        setUserInfo(userData?.data);
+      } catch (err) {
+        setLoading(false);
+        console.log(err);
       }
     };
     fetchData();
@@ -26,31 +45,91 @@ export const UserInfoModel = (props) => {
   const userInformation = () => {
     return (
       <>
+        {console.log(orderHistory)}
         <Grid fluid>
           <Row className="show-grid">
-            <Col md={11}>
-              <Panel
-                shaded
-                bordered
-                bodyFill
-                style={{ display: "inline-block", width: 240 }}
-              >
-                <img src={userInfo?.userInfo?.profilePic} height="240" />
-                <Panel
-                  header={`${
-                    userInfo?.userInfo?.firstname +
-                    " " +
-                    userInfo?.userInfo?.lastname
-                  }`}
-                >
-                  <small>{userInfo?.userInfo?.email}</small>
-                </Panel>
-              </Panel>
-            </Col>
-            <Col md={2}></Col>
-            <Col md={11}>
-              Address:A suite of React components, sensible UI design, and a
-              friendly development experience.
+            <Col md={24}>
+              <PanelGroup accordion bordered>
+                {orderHistory?.length > 0 &&
+                  orderHistory?.map((items, key) => {
+                    return (
+                      <Panel
+                        eventKey={key}
+                        id={`panel${key}`}
+                        header={
+                          <div
+                            className="header"
+                            style={{
+                              display: "flex",
+                              justifyContent: "space-between",
+                            }}
+                          >
+                            <div>
+                              <h6>Order Placed</h6>
+                              <span>
+                                <DateFormat timestamp={items.createdAt} />
+                              </span>
+                            </div>
+                            <div>
+                              <h6>Total</h6>
+                              <span>₹{items.finalAmount}</span>
+                            </div>
+                            <div>
+                              <h6>Ship To</h6>
+                              <Whisper
+                                placement="bottom"
+                                controlId="control-id-hover"
+                                trigger="hover"
+                                speaker={
+                                  <Tooltip>
+                                    {items?.shippingAddress?.address +
+                                      items?.shippingAddress?.landmark +
+                                      " " +
+                                      items?.shippingAddress?.city +
+                                      " " +
+                                      items?.shippingAddress?.state}
+                                  </Tooltip>
+                                }
+                              >
+                                <span>{items?.shippingAddress?.name}</span>
+                              </Whisper>
+                            </div>
+
+                            <p style={{ fontSize: 12, marginRight: "2%" }}>
+                              Order ID: # {items._id} &nbsp;&nbsp;
+                            </p>
+                          </div>
+                        }
+                        key={key}
+                      >
+                        <div>
+                          <ul className="orderHistory">
+                            {items.productsDetails.map((products, index) => {
+                              return (
+                                <li key={products.productId._id}>
+                                  <img
+                                    src={
+                                      products.productId.productImage[0]
+                                        .imageUrl
+                                    }
+                                    className="imageIcon"
+                                    alt={products.productId.title}
+                                  />
+                                  <p>
+                                    {products.productId.title} &nbsp; || &nbsp;
+                                    Quantity: {products.quantity} &nbsp; ||
+                                    &nbsp; Price: {products.productId.price}
+                                  </p>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </div>
+                      </Panel>
+                    );
+                  })}
+                {orderHistory?.length === 0 && <>No Records Found</>}
+              </PanelGroup>
             </Col>
           </Row>
         </Grid>
@@ -60,13 +139,13 @@ export const UserInfoModel = (props) => {
 
   return (
     <>
-      <Drawer open={open} onClose={setOpenD}>
+      <Drawer size="md" open={open} onClose={setOpenD}>
         <Drawer.Header>
-          <Drawer.Title>User Information</Drawer.Title>
+          <Drawer.Title>User Order History</Drawer.Title>
         </Drawer.Header>
 
         <Drawer.Body>
-          {loading ? <Placeholder.Paragraph /> : <>{userInformation()}</>}
+          {loading ? <LoaderDiv /> : <>{userInformation()}</>}
         </Drawer.Body>
       </Drawer>
     </>

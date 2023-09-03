@@ -137,13 +137,13 @@ exports.createProduct = async (req, res) => {
     results.map((data, index) => {
       return { public_id: data.public_id, imageUrl: data.url };
     });
-
+  const categoryA = value.category.split(",");
   const productCreate = new ProductModel({
     title: value.title,
     description: value.description,
     price: value.quantity,
     quantity: value.quantity,
-    category: value.category,
+    category: categoryA,
     discount: value.discount,
     productImage: productImages,
     adminId: loginId,
@@ -197,14 +197,55 @@ exports.updateProduct = async (req, res, next) => {
       return res.status(404).json({ error: "Product not found" });
     }
 
+    if (req.files.length > 0) {
+      const imagesLength = req.files;
+      const uploadImages =
+        imagesLength.length &&
+        imagesLength.map((imageData, index) => {
+          const localPath = path.join(
+            __dirname,
+            "..",
+            `/uploads/${imageData.originalname}`
+          );
+
+          return new Promise((resolve, reject) => {
+            cloudinary.v2.uploader.upload(
+              localPath,
+              {
+                folder: "Inventory_backend",
+              },
+              (error, result) => {
+                if (result) {
+                  fs.unlinkSync(localPath);
+                  resolve(result);
+                } else {
+                  reject(error);
+                }
+              }
+            );
+          });
+        });
+      const results = await Promise.all(uploadImages);
+
+      var productImages =
+        results.length > 0 &&
+        results.map((data, index) => {
+          return { public_id: data.public_id, imageUrl: data.url };
+        });
+    }
+
+    const categoryA = value.category.split(",");
+
     // Update the product fields
     product.title = value.title;
     product.description = value.description;
     product.price = value.price;
     product.quantity = value.quantity;
-    product.category = value.category;
+    product.category = categoryA;
     product.discount = value.discount;
-
+    if (req.files.length > 0) {
+      product.productImage = productImages;
+    }
     await product.save();
 
     return res

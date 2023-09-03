@@ -358,26 +358,26 @@ ul li {
     margin-left:12px;
     font: 500 18px/20px "Playfair Display",Helvetica,sans-serif;
 }
-.succulents{
-    background-image: url("../image/succulents_box.jpg");
-}
 
 
-.jade{
-    background-image: url("../image/jade.jpg");
+
+.container-inline {
+    display: flex;
+    flex-wrap: wrap;
 }
-.snake {
-    background-image: url("../image/snake.jpg");
+
+.items {
+    width: 25%; /* Show 4 items per row on desktop */
+    padding: 10px;
+    box-sizing: border-box;
 }
-.bonsai{
-    background-image: url("../image/bonsai.jpg");
+
+@media (max-width: 768px) {
+    .items {
+        width: 100%; /* Display as block on mobile */
+    }
 }
-.cactus{
-    background-image: url("../image/cactus_box.jpg");  
-}
-.syngonium {
-    background-image: url("../image/sygonium.jpg"); 
-}
+
 .newPlant{
     
     background-repeat: no-repeat;
@@ -410,7 +410,7 @@ ul li {
  
 }
 
-.Nplant h2 {
+.Nplant h3 {
     color:#fff !important;
     background-color: #00000069;
     padding:3px;

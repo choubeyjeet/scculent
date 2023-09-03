@@ -80,3 +80,19 @@ background: transparent !important;
     width: 400px;
 }
 
+.inline-display-box {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .item {
+    flex: 1;
+    margin: 10px;
+    
+  }
+
+  @media (max-width: 768px) {
+    .inline-display-box {
+      flex-direction: column;
+    }
+  }

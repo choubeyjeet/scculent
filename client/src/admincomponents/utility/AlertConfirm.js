@@ -1,9 +1,8 @@
 import { Modal, Button } from "rsuite";
 import RemindIcon from "@rsuite/icons/legacy/Remind";
 import React from "react";
-import { axiosInstance } from "../../config/axiosInstance";
 import { useSelector } from "react-redux";
-import { getAllProducts } from "../features/productList/productListThunk";
+
 import { useDispatch } from "react-redux";
 
 export const AlertConfirm = (props) => {

@@ -13,6 +13,7 @@ const {
   getDataByStatus,
   updateOrderStatus,
   getOrderByDate,
+  getOrderByUserId,
 } = require("../controllers/admin/Order/OrderController");
 
 //orders
@@ -31,5 +32,11 @@ router.get(
   updateOrderStatus
 );
 router.get("/admin/getOrderByDate", isAuthenticated, isAdmin, getOrderByDate);
+router.get(
+  "/admin/getOrderByUserId",
+  isAuthenticated,
+  isAdmin,
+  getOrderByUserId
+);
 
 module.exports = router;

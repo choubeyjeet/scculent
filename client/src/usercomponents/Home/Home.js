@@ -1,23 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getAllProducts } from "../features/products/prooductListThunk";
-import {
-  Carousel,
-  Grid,
-  Row,
-  Col,
-  Panel,
-  Rate,
-  Progress,
-  ButtonToolbar,
-  IconButton,
-  Button,
-} from "rsuite";
-
-import image5 from "./asset/image/image5.jpg";
-import image6 from "./asset/image/image6.jpg";
-import image7 from "./asset/image/image7.jpg";
-import image8 from "./asset/image/image8.jpg";
+import { Carousel, Grid, Row, Col, Panel, Rate, Button } from "rsuite";
 
 import video from "./asset/image/video.mp4";
 import NavbarHead from "../Navbar/NavbarHead";
@@ -25,18 +9,25 @@ import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
 import { LoaderDiv } from "./LoaderDiv";
 
-import {
-  AiOutlineShoppingCart,
-  AiOutlineHeart,
-  AiOutlineEye,
-} from "react-icons/ai";
-import { VscListSelection } from "react-icons/vsc";
 import "./asset/css/Home.css";
+import { getAllCategoryData } from "../../admincomponents/features/category/categoryProductsThunk";
+
 export default function Home() {
   const [topSelling, setTopSelling] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [category, setCategory] = useState([]);
 
   const dispatch = useDispatch();
+
+  const getCategory = async () => {
+    try {
+      const response = await dispatch(getAllCategoryData());
+      setCategory(response.payload.data.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -50,6 +41,7 @@ export default function Home() {
         setLoading(false);
       }
     };
+    getCategory();
     getData();
   }, []);
 
@@ -133,94 +125,43 @@ export default function Home() {
           <div className="Our_Product">
             <h1 className="trendingHead">Our Product</h1>
             <Grid fluid>
-              <Row className="show-grid">
-                {/* <Col md={1}></Col> */}
-                <Col md={8} sm={24} xs={24} data-aos="fade-up">
-                  <div className="newPlant bonsai">
-                    <div className="Nplant">
-                      <h2>Bonsai Plant!</h2>
-
-                      <Link to="/products/Bonsai Plants">
-                        <Button color="green" appearance="primary">
-                          Shop Now
-                        </Button>
-                      </Link>
-                    </div>
+              <Row>
+                <Col md={24}>
+                  <div className="container-inline">
+                    {category.map((items, index) => {
+                      return (
+                        <div className="items" key={index}>
+                          <div
+                            className="newPlant item"
+                            style={{
+                              backgroundImage: `url(${items.productImage[0].imageUrl})`,
+                              position: "relative",
+                            }}
+                          >
+                            <div className="Nplant">
+                              <h3>{items.categoryName}</h3>
+                              <Link to={`/products/${items.categoryName}`}>
+                                <Button
+                                  color="green"
+                                  appearance="primary"
+                                  style={{
+                                    width: "50%",
+                                    position: "absolute",
+                                    bottom: 0,
+                                    left: "50%",
+                                    transform: "translateX(-50%)",
+                                  }}
+                                >
+                                  Shop Now
+                                </Button>
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </Col>
-                <Col md={8} sm={24} xs={24} data-aos="fade-up">
-                  <div className="newPlant snake">
-                    <div className="Nplant">
-                      <h2>Snake Plant!</h2>
-                      <Link to="/products/Snake Plants">
-                        {" "}
-                        <Button color="green" appearance="primary">
-                          Shop Now
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </Col>
-                <Col md={8} sm={24} xs={24} data-aos="fade-up">
-                  <div className="newPlant cactus">
-                    <div className="Nplant">
-                      <h2>Cactus Plant!</h2>
-
-                      <Link to="/products/Cactus Plants">
-                        {" "}
-                        <Button color="green" appearance="primary">
-                          Shop Now
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </Col>
-                {/* <Col md={1}></Col> */}
-              </Row>
-              <Row className="show-grid">
-                {/* <Col md={1}></Col> */}
-                <Col md={8} sm={24} xs={24} data-aos="fade-up">
-                  <div className="newPlant syngonium">
-                    <div className="Nplant">
-                      <h2>Syngonium Plants!</h2>
-
-                      <Link to="/products/Syngonium Plants">
-                        {" "}
-                        <Button color="green" appearance="primary">
-                          Shop Now
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </Col>
-                <Col md={8} sm={24} xs={24} data-aos="fade-up">
-                  <div className="newPlant succulents">
-                    <div className="Nplant">
-                      <h2>Succulents Plants!</h2>
-
-                      <Link to="/products/Succulents Plants">
-                        {" "}
-                        <Button color="green" appearance="primary">
-                          Shop Now
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </Col>
-                <Col md={8} sm={24} xs={24} data-aos="fade-up">
-                  <div className="newPlant jade">
-                    <div className="Nplant">
-                      <h2>Jade Plant!</h2>
-
-                      <Link to="/products/Jade Plants">
-                        <Button color="green" appearance="primary">
-                          Shop Now
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </Col>
-                {/* <Col md={1}></Col> */}
               </Row>
             </Grid>
           </div>{" "}

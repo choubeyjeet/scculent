@@ -20,6 +20,7 @@ import NoticeIcon from "@rsuite/icons/Notice";
 import { useState } from "react";
 import { OrderList } from "./OrderList";
 import { OrderDetails } from "./OrderDetails";
+import { ManageCategory } from "./ManageCategory";
 
 export const AdminHomePage = () => {
   const [heading, setHeading] = useState("Dashboard");
@@ -79,6 +80,7 @@ export const AdminHomePage = () => {
               <Route path="inbox" element={<Inbox />}></Route>
               <Route path="orders" element={<OrderList />}></Route>
               <Route path="orders/:id" element={<OrderDetails />}></Route>
+              <Route path="category" element={<ManageCategory />}></Route>
             </Routes>
           </Content>
         </Container>
